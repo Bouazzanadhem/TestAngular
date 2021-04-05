@@ -19,7 +19,7 @@ export class AddPostComponent implements OnInit {
     titre: new FormControl('',[Validators.required]),
     Description: new FormControl('',[Validators.required]),
     categorie: new FormControl('',[Validators.required]),
-    date: new FormControl(new Date()),
+    date: new FormControl(new Date().toDateString()),
     id : new FormControl( Math.floor(Math.random()*100))
   })
   categories: Categorie[] = [
