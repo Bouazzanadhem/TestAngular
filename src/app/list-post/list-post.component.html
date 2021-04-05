@@ -1,0 +1,38 @@
+<div style="width: 1000px; margin: auto;">
+    <h1 style="text-align: center;">Posts List</h1>
+    <button class="float-right" mat-raised-button color="warn" style="margin: 10px auto;" type="button" [routerLink]="['/add']">
+      <i class="fas fa-plus"></i> Add Post</button>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titre</th>
+          <th scope="col">Description</th>
+          <th scope="col">Catégorie</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let x of Posts;let i=index">
+        <tr>
+          <th scope="row">{{i+1}}</th>
+          <td>{{x.titre | uppercase}}</td>
+          <td>{{x.Description}}</td>
+          <td>{{x.categorie}}</td>
+          <td>{{x.date}}</td>
+          <td>
+            <button type="submit" class="btn btn-success" [routerLink]="['/update', x.id ]">
+              <i class="fas fa-pen-square"></i> Update
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deletepost(i)">
+              <i class="fas fa-trash-alt"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+
