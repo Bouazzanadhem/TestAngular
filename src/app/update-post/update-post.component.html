@@ -1,1 +1,42 @@
-<p>update-post works!</p>
+<div class="container row">
+    <div class="offset-3 col-6">
+        <h1>Update Post</h1>
+        <form class="example-form" [formGroup]="updatepostForm" (ngSubmit)="updatePost()">
+            <mat-form-field class="example-full-width">
+              <mat-label>Titre</mat-label>
+              <input matInput placeholder="Ex. Titre Post" formControlName="titre">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updatepostForm.controls.titre.hasError('required')">
+              Titre is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Ex. Description" formControlName="Description"></textarea>
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updatepostForm.controls.titre.hasError('required')">
+                Description is required
+            </mat-error>
+
+            <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Catégorie</mat-label>
+                <mat-select formControlName="categorie">
+                  <mat-option *ngFor="let cat of categories" [value]="cat.value" >
+                    {{cat.viewValue}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updatepostForm.controls.categorie.hasError('required')">
+                Categorie is required
+            </mat-error>
+
+            <div class="example-button-row">
+            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit" [disabled]="updatepostForm.invalid"> <i class="fas fa-plus"></i> Add</button>
+            <button class="float-right" mat-raised-button color="dark" style="margin: 10px auto;" type="button" [routerLink]="['/list']"> <i class="fas fa-arrow-alt-circle-left"></i> Cancel</button>
+            </div>
+        </form>
+    </div>
+  </div>
+  
+
+

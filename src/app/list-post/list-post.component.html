@@ -18,7 +18,7 @@
           <td>{{x.titre | uppercase}}</td>
           <td>{{x.Description}}</td>
           <td>{{x.categorie}}</td>
-          <td>{{x.date}}</td>
+          <td>{{x.date | date:"MM/dd/yy" }}</td>
           <td>
             <button type="submit" class="btn btn-success" [routerLink]="['/update', x.id ]">
               <i class="fas fa-pen-square"></i> Update

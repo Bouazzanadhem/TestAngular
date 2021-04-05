@@ -6,29 +6,36 @@ import { Injectable } from '@angular/core';
 export class PostService {
 
   constructor() { }
-   // Add new post (used in add-contact component)
+   // Add new post (used in add-post component)
    addpost(postData: any){
     let posts = JSON.parse(localStorage.getItem("posts") || '[]');
     posts.push(postData);
     localStorage.setItem("posts",JSON.stringify(posts));
    }
  
-   //Get all post (used in dashbord compnent)
+   //Get all post (used in list-post compnent)
    getAllpost(){
     return JSON.parse(localStorage.getItem("posts") || '[]');
    }
  
-   //Get post by index (used in update-contact component)
+   //Get post by index (used in update-post component)
    getpostById(id:number){
+    let Posts = JSON.parse(localStorage.getItem("posts") || '[]');
+    let post = Posts.find((x:any)=>x.id == id);
+    return post;
      
    }
  
-   //Update post by index (used in update-contact compoenent)
-   updatepostDataById(updatuserData:any,id:number){
+   //Update post by index (used in update-post compoenent)
+   updatepostDataById(updatpostData:any,id:number){
+    let Posts =  JSON.parse(localStorage.getItem("posts") || '[]');
+    let index=Posts.findIndex((x:any) => x.id == id);
+    Posts.splice(index,1,updatpostData);
+    localStorage.setItem("posts",JSON.stringify(Posts));
      
    }
  
-   // Delete post by index (used in dashbord component)
+   // Delete post by index (used in list-post component)
    deletepostByIndex(index:number){
     let posts= JSON.parse(localStorage.getItem("posts") || '[]');
     posts.splice(index,1);
